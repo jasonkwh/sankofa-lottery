@@ -1,0 +1,2 @@
+# sankofa-lottery
+為2016年11月30日Sankofa活動寫的抽獎iOS小程序
