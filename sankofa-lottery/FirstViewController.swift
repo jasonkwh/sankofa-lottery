@@ -15,7 +15,12 @@ class FirstViewController: UIViewController {
     @IBAction func deletePrev(_ sender: Any) {
         if(globalVal.arrayOfNames.count > 0) {
             globalVal.arrayOfNames.removeLast()
-            prevLabel.text = ""
+            if(globalVal.arrayOfNames.count >= 1) {
+                prevLabel.text = globalVal.arrayOfNames[globalVal.arrayOfNames.count-1]
+            } else {
+                prevLabel.text = ""
+            }
+            print(globalVal.arrayOfNames)
         } else {
             let alertController = UIAlertController(title: "Error", message: "Array cannot be null", preferredStyle: UIAlertControllerStyle.alert)
             alertController.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default,handler: nil))
