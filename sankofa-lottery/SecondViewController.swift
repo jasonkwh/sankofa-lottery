@@ -24,7 +24,7 @@ class SecondViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         
         nametag.text = ""
-        timeField.text = "10"
+        timeField.text = "20"
     }
     
     @IBAction func startLot(_ sender: Any) {
@@ -32,6 +32,16 @@ class SecondViewController: UIViewController {
             let alertController = UIAlertController(title: "Error", message: "Array cannot be null", preferredStyle: UIAlertControllerStyle.alert)
             alertController.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default,handler: nil))
             self.present(alertController, animated: true, completion: nil)
+            
+            lotteryTimer.invalidate()
+            nameTimer.invalidate()
+            counter = 0
+            randomName = 0
+            nametag.text = ""
+            if(timeFieldBk != "") {
+                timeField.text = timeFieldBk
+            }
+            timeFieldBkOn = false
         } else {
             if(timeFieldBkOn == false) {
                 timeFieldBk = timeField.text!
@@ -44,6 +54,7 @@ class SecondViewController: UIViewController {
     }
     
     @IBAction func stopTimer(_ sender: Any) {
+        globalVal.arrayOfNames.remove(at: randomName)
         lotteryTimer.invalidate()
         nameTimer.invalidate()
     }
