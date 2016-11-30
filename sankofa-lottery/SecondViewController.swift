@@ -54,7 +54,9 @@ class SecondViewController: UIViewController {
     }
     
     @IBAction func stopTimer(_ sender: Any) {
-        globalVal.arrayOfNames.remove(at: randomName)
+        if(globalVal.arrayOfNames.count > 0) {
+            globalVal.arrayOfNames.remove(at: randomName)
+        }
         lotteryTimer.invalidate()
         nameTimer.invalidate()
     }
