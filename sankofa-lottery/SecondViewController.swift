@@ -48,8 +48,11 @@ class SecondViewController: UIViewController {
                 timeFieldBkOn = true
             }
             counter = Int(timeField.text!)!
-            lotteryTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(SecondViewController.updateTextfield), userInfo: nil, repeats: true)
-            nameTimer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(SecondViewController.updateNametag), userInfo: nil, repeats: true)
+            
+            if(!lotteryTimer.isValid) {
+                lotteryTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(SecondViewController.updateTextfield), userInfo: nil, repeats: true)
+                nameTimer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(SecondViewController.updateNametag), userInfo: nil, repeats: true)
+            }
         }
     }
     
